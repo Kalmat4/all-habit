@@ -406,7 +406,7 @@ function weekLabel(w) {
         <!-- ═══ TAB: Dependencies ═══ -->
         <div v-show="tab === 'deps'">
             <p class="section-title">Добавить</p>
-            <form class="dep-add" @submit.prevent="addDep">
+            <form class="dep-add flex-column flex-sm-row" @submit.prevent="addDep">
                 <input
                     v-model="depForm.name"
                     type="text"
