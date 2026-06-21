@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Нет связи — All Habit</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0f0f13;
+            color: #e8e8ed;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+        }
+        .offline-msg { max-width: 320px; }
+        .offline-msg h1 { font-size: 1.25rem; margin-bottom: 8px; }
+        .offline-msg p { color: #8b8b9e; font-size: 0.9rem; line-height: 1.5; }
+        .retry {
+            margin-top: 24px;
+            display: inline-block;
+            padding: 10px 24px;
+            border: 1px solid #2a2a38;
+            border-radius: 8px;
+            color: #8b8b9e;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-msg">
+        <h1>Нет подключения</h1>
+        <p>Проверьте интернет и попробуйте снова.</p>
+        <a href="/" class="retry" onclick="location.reload();return false;">Обновить</a>
+    </div>
+</body>
+</html>

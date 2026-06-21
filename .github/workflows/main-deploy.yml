@@ -1,0 +1,31 @@
+name: Deploy MAIN Branch
+
+on:
+    push:
+        branches:
+            - mainTest
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Deploy to Server
+            uses: appleboy/ssh-action@master
+            with:
+                host: ${{ secrets.HOSTNAME }}
+                port: 22
+                username: ${{ secrets.USERNAME }}
+                key: ${{ secrets.PRIVATE_KEY }}
+                script: |
+                    cd ../../var/www/allhabit
+                    git fetch --prune
+                    git reset --hard origin/main
+                    npm run build
+          - name: ✅ Notify success in Telegram
+            if: ${{ success() }}
+            run: curl "https://erp.kineu.kz/deploy-notify?status=success&token=tgdeploysecrect&host=allfitPROD&user=Kalmat4"
+
+          - name: ❌ Notify failure in Telegram
+            if: ${{ failure() }}
+            run: curl "https://erp.kineu.kz/deploy-notify?status=failure&token=tgdeploysecrect&host=allfitPROD&user=Kalmat4"
